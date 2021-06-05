@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Leonardo Colman Lopes
+ * Copyright 2021 Leonardo Colman Lopes
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -9,7 +9,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either press or implied.
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
@@ -22,24 +22,41 @@ plugins {
     `maven-publish`
     signing
     id("org.jetbrains.dokka") version "1.4.32"
-    id("io.gitlab.arturbosch.detekt").version("1.15.0-RC1")
+    id("io.gitlab.arturbosch.detekt").version("1.17.1")
+    antlr
 }
 
-// FIXME Replace with group
-group = "br.com.colman."
+group = "br.com.colman"
 version = getenv("RELEASE_VERSION") ?: "local"
 
 repositories {
     mavenCentral()
-    jcenter()
+}
+
+kotlin {
+    explicitApi()
+}
+
+sourceSets {
+    main {
+        java.srcDir("src/main/gen")
+    }
 }
 
 dependencies {
+    // Antlr
+    antlr("org.antlr:antlr4:4.9.2")
+
+    // Math evaluation
+    implementation("net.objecthunter:exp4j:0.4.8")
+
     // Kotest
     testImplementation("io.kotest:kotest-runner-junit5:4.6.0")
-    
-    // Mockk
-    testImplementation("io.mockk:mockk:1.11.0")
+    testImplementation("io.kotest:kotest-property:4.6.0")
+}
+
+tasks.generateGrammarSource {
+    outputDirectory = file("src/main/gen")
 }
 
 tasks.withType<KotlinCompile> {
@@ -48,10 +65,6 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
-}
-
-kotlin {
-    explicitApi()
 }
 
 val sourcesJar by tasks.registering(Jar::class) {
@@ -85,15 +98,15 @@ publishing {
             artifact(javadocJar.get())
 
             pom {
-                name.set("NAME")    // FIXME change name
-                description.set("DESCRIPTION") //FIXME change description
-                url.set("https://www.github.com/LeoColman/repo") // FIXME change URL
+                name.set("dice-helper")
+                description.set("Dice Helper")
+                url.set("https://www.github.com/LeoColman/dice-helper")
 
 
                 scm {
-                    connection.set("scm:git:http://www.github.com/LeoColman/repo") // FIXME change URL
-                    developerConnection.set("scm:git:http://github.com/LeoColman/repo") // FIXME change URL
-                    url.set("https://www.github.com/LeoColman/repo") // FIXME change URL
+                    connection.set("scm:git:http://www.github.com/LeoColman/dice-helper")
+                    developerConnection.set("scm:git:http://github.com/LeoColman/dice-helper")
+                    url.set("https://www.github.com/LeoColman/dice-helper")
                 }
 
                 licenses {

@@ -13,5 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+grammar DiceNotation ;
+@header {
+package br.com.colman.dicehelper;
+}
+notation: dice (operator notation)? EOF;
+dice: (amount=DIGIT? D face=DIGIT) | (fixed=DIGIT) ;
+operator: '+' | '-' ;
 
-rootProject.name = "dice-helper"
+D: 'd' | 'D' ;
+DIGIT: [0-9]+ ;
+WS: (' ' | [\t\r\n]) -> skip ;
