@@ -2,7 +2,7 @@
 
 [![Build](https://github.com/LeoColman/dice-helper/actions/workflows/build.yml/badge.svg)](https://github.com/LeoColman/dice-helper/actions/workflows/build.yml)
 [![GitHub](https://img.shields.io/github/license/LeoColman/dice-helper)](https://github.com/LeoColman/dice-helper/blob/master/LICENSE) 
-[![Maven Central](https://img.shields.io/maven-central/v/group/dicee-helper.svg)](https://search.maven.org/search?q=g:group)
+![Maven Central](https://img.shields.io/maven-central/v/br.com.colman/dice-helper)
 
 A Kotlin library to help you parse DiceNotations and roll dice for your RPG games.
 
