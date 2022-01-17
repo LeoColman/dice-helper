@@ -52,7 +52,7 @@ dependencies {
 
     // Kotest
     testImplementation("io.kotest:kotest-runner-junit5:4.6.3")
-    testImplementation("io.kotest:kotest-property:5.0.0")
+    testImplementation("io.kotest:kotest-property:5.1.0")
 }
 
 tasks.generateGrammarSource {
