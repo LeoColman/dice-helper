@@ -51,7 +51,7 @@ dependencies {
     implementation("net.objecthunter:exp4j:0.4.8")
 
     // Kotest
-    testImplementation("io.kotest:kotest-runner-junit5:4.6.3")
+    testImplementation("io.kotest:kotest-runner-junit5:5.2.1")
     testImplementation("io.kotest:kotest-property:5.0.0")
 }
 
