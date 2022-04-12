@@ -45,7 +45,7 @@ sourceSets {
 
 dependencies {
     // Antlr
-    antlr("org.antlr:antlr4:4.9.3")
+    antlr("org.antlr:antlr4:4.10")
 
     // Math evaluation
     implementation("net.objecthunter:exp4j:0.4.8")
