@@ -51,7 +51,7 @@ dependencies {
     implementation("net.objecthunter:exp4j:0.4.8")
 
     // Kotest
-    testImplementation("io.kotest:kotest-runner-junit5:4.6.3")
+    testImplementation("io.kotest:kotest-runner-junit5:5.2.3")
     testImplementation("io.kotest:kotest-property:5.2.3")
 }
 
@@ -60,7 +60,7 @@ tasks.generateGrammarSource {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = "11"
 }
 
 tasks.withType<Test> {
